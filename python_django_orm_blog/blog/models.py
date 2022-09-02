@@ -30,9 +30,10 @@ class Post(TimestampedModel):
     """A blog post."""
 
     title = models.CharField(max_length=200)
-    body = models.TextField()
+    body = models.TextField(null=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+    published = models.BooleanField(default=False)
 
 
 class PostComment(TimestampedModel):
